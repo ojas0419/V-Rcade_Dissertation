@@ -8,11 +8,11 @@ public class BulletDestroy : MonoBehaviour
     {
         if (other.transform.tag == "Enemy")
         {
-            // Add score
-            ScoreScript.scoreValue += 10;
+            //// Add score
+            //ScoreScript.scoreValue += 10;
 
-            // Destroys object tagged "Enemy"
-            Destroy(other.gameObject);
+            //// Destroys object tagged "Enemy"
+            //Destroy(other.gameObject);
 
             // Hides bullet gameObject as we destroy it in other scripts
             gameObject.SetActive(false);

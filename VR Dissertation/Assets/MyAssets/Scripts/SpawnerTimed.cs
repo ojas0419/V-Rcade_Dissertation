@@ -5,14 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SpawnerTimed : MonoBehaviour
 {    
-    public AudioClip audioClip; // Get Audio Clip    
+    public AudioClip audioClip;         // Get Audio Clip    
     private AudioSource audioSource;    // Get Audio Source    
-    private float duration; // Duration of audio    
+    private float duration;             // Duration of audio    
 
-    public GameObject[] enemies;    // Get game object    
-    public Transform[] points;  // Declare locations to instantiate objects    
-    public float beat = (60/130)*2; // Time when enemies are instantiated    
-    private float timer;    // Timer between beats and spawning of enemies
+    public GameObject[] enemies;        // Get game object    
+    public Transform[] points;          // Declare locations to instantiate objects    
+    public float beat = (60/130)*2;     // Time when enemies are instantiated    
+    private float timer;                // Timer between beats and spawning of enemies
 
     private void Awake()
     {

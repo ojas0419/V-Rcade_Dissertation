@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4802672809506639350}
   - component: {fileID: 4802672809506639345}
   m_Layer: 0
-  m_Name: Dummy_Gun_Right 1
+  m_Name: Dummy_Gun_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   Bullet: {fileID: 7684703705329810394, guid: b03bfd4c253521241a44e1ace138397a, type: 3}
   Bullet_Forward_Force: 1000
   clip: {fileID: 8300000, guid: 85874c700540bf44385b5af05d402668, type: 3}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 4802672809506639350}
 --- !u!1 &1233424770697088535
 GameObject:
   m_ObjectHideFlags: 0

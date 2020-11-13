@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 54a1d9ef7b5ba0648904c5d41bef5162, type: 2}
+  - {fileID: 2100000, guid: 8e07d729eecb8304388a9a023a9b1183, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +108,7 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4278250495
+    rgba: 4278255615
   m_Size: -0.38
 --- !u!54 &6860628985116143144
 Rigidbody:

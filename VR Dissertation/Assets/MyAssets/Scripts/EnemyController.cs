@@ -10,10 +10,8 @@ public class EnemyController : MonoBehaviour
 
     public float NormalSpeed = 10f;
     private float normalSpeed = 10f;
-
+    [SerializeField]
     private int hp = 2;
-
-    //public Transform target;
 
     // Shoot at these locations
     public int[] shootLocations;
@@ -21,8 +19,11 @@ public class EnemyController : MonoBehaviour
     public GameObject Barrel;
     public GameObject laser;
 
+    [SerializeField]
     private float shootPower = 1000f;
+    [SerializeField]
     private float fireRate = 2f;
+    [SerializeField]
     private float nextFire = 0.0f;
 
     public AudioSource source;
@@ -30,11 +31,6 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        //if(target != null)
-        //{
-        //    transform.LookAt(target);
-        //}
-
         // Face main camera aka player
         transform.forward = Vector3.ProjectOnPlane((Camera.main.transform.position - transform.position), Vector3.up).normalized;
         Move();
@@ -55,6 +51,7 @@ public class EnemyController : MonoBehaviour
     {
         hp--;
     }
+
     private void Move()
     {
         // Face player / main camera
@@ -107,7 +104,7 @@ public class EnemyController : MonoBehaviour
         // Play laser sound once
         source.PlayOneShot(laserSound);
 
-        // Destroy laser after 5 seconds
-        Destroy(firedLaser, 5f);
+        // Destroy laser after 2 seconds
+        Destroy(firedLaser, 2f);
     }
 }
