@@ -2292,6 +2292,7 @@ GameObject:
   - component: {fileID: 4973532047967868604}
   - component: {fileID: -7925283372308500450}
   - component: {fileID: -6283432313347240620}
+  - component: {fileID: 2025149314427673512}
   m_Layer: 0
   m_Name: Enemy_Red
   m_TagString: Enemy
@@ -2381,12 +2382,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4449877165461589187}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a282b76b4d685e46bfe970eca91b85b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 5
 --- !u!65 &-7925283372308500450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2416,6 +2416,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2025149314427673512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449877165461589187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ca8d869f9cce9479651cb8cf1e3d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  pointsWorth: 30
+  cubeSize: 0.2
+  cubesInRow: 5
+  explosionForce: 50
+  explosionRadius: 4
+  explosionUpward: 0.4
 --- !u!1 &4518992770423774184
 GameObject:
   m_ObjectHideFlags: 0

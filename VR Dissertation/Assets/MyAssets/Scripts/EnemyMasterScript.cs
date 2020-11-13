@@ -14,7 +14,7 @@ public class EnemyMasterScript : MonoBehaviour
     #endregion Enemy Data
 
     #region Creating Pieces
-    //// If you want to create smaller copy of the object, use this: **
+    //// If you want to create smaller copy of the object, use this: !!
     //public GameObject piecePrefab;
 
     public float cubeSize = 0.2f;
@@ -46,8 +46,8 @@ public class EnemyMasterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //// Move forward at a constant speed
-        //transform.position += Time.deltaTime * transform.forward * 2;
+        // Move forward at a constant speed
+        transform.position += Time.deltaTime * transform.forward * 2;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -56,12 +56,11 @@ public class EnemyMasterScript : MonoBehaviour
         {
             if (health >= 1)                                    // ...if health is 1 or higher, execute this
             {
-                Debug.Log("Bullet has hit the enemy once");
                 Destroy(collision.gameObject);                  // Destroy the object tagged "Bullet"
                 health -= 1;                                    // Reduce health by 1
                 StartCoroutine("ColourFlash");                  // Run coroutine
             }
-            else if (health <= 0)                               // ...if health is 0 or lower, execute this instead
+            if (health <= 0)                                    // ...if health is 0 or lower, execute this instead
             {
                 Destroy(collision.gameObject);                  // Destroy the object tagged "Bullet"
                 ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
@@ -126,7 +125,7 @@ public class EnemyMasterScript : MonoBehaviour
         GameObject piece;
         piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-        //// Create a copy of any chosen object prefab **
+        //// Create a copy of any chosen object prefab !!
         //piece = Instantiate(piecePrefab, new Vector3(0, 0, 0), Quaternion.identity);
 
         // Set piece position and scale
