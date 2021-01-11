@@ -9,8 +9,8 @@ public class SpawnerTimed : MonoBehaviour
     private AudioSource audioSource;    // Get Audio Source    
     private float duration;             // Duration of audio    
 
-    public GameObject[] enemies;        // Get game object    
-    public Transform[] points;          // Declare locations to instantiate objects    
+    public GameObject[] enemies;        // Array of enemy gameObjects defined in the Unity inspector    
+    public Transform[] points;          // Array of locations to instantiate objects    
     public float beat = (60/130)*2;     // Time when enemies are instantiated    
     private float timer;                // Timer between beats and spawning of enemies
 
