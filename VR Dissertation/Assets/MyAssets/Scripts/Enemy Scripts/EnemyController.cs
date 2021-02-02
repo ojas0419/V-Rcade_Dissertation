@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public Transform player;
+
     private int index = 0;
     public Transform[] LocationCoords;
 
@@ -97,6 +99,13 @@ public class EnemyController : MonoBehaviour
     {
         // Instantiate laser from Barrel position and rotate laser to be straight
         var firedLaser = Instantiate(laser, Barrel.transform.position, Barrel.transform.rotation * Quaternion.Euler(90f, 0f, 0f));
+        //var firedLaser = Instantiate(laser, Barrel.transform.position, Quaternion.identity);
+
+        // Target the player
+        firedLaser.transform.LookAt(player);
+
+        // Calculate trajectory direction
+        Vector3 trajectory = player.position - firedLaser.transform.position;
 
         // Get rigidbody and add force to laser
         firedLaser.GetComponent<Rigidbody>().AddForce(Barrel.transform.forward * shootPower);
