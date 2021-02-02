@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class SpawnerTimed : MonoBehaviour
@@ -55,5 +56,11 @@ public class SpawnerTimed : MonoBehaviour
 
             yield return null;
         }
+
+        // THIS CODE DOES NOT WORK FULLY
+        //if(audioSource.isPlaying == false)
+        //{
+        //    SceneManager.LoadScene("Main_Menu_Scene", LoadSceneMode.Additive);
+        //}
     }
 }
