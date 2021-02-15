@@ -14,12 +14,11 @@ public class ParticleSea : MonoBehaviour
     public float noiseScale = 0.2f;                     // change noise scale
     public float heightScale = 3f;                      // change height scale
 
-    // Floats to change value with time for perlin noise function
+    // Floats to change values for perlin noise animations
     private float perlinNoiseAnimX = 0.01f;
     private float perlinNoiseAnimY = 0.01f;
     public float xAnimationSpeed;
     public float yAnimationSpeed;
-    public Vector2 perlinNoiseOffset;
 
     public void XAnimationSpeed(float speed)
     {
@@ -43,8 +42,6 @@ public class ParticleSea : MonoBehaviour
 
         // Assign spawned particles to the array
         particleSystem.GetParticles(particlesArray);
-
-        StartCoroutine("Animate");
     }
 
     private void Update()
@@ -65,19 +62,10 @@ public class ParticleSea : MonoBehaviour
         }
 
         // Add animations to X and Y coords
-        perlinNoiseAnimX += 0.01f;
-        perlinNoiseAnimY += 0.01f;
+        perlinNoiseAnimX += 0.01f * Time.deltaTime * xAnimationSpeed;
+        perlinNoiseAnimY += 0.01f * Time.deltaTime * yAnimationSpeed;
 
         // Assign this array back to the particle system
         particleSystem.SetParticles(particlesArray, particlesArray.Length);
-    }
-
-    IEnumerator Animate()
-    {
-        while (true)
-        {
-            perlinNoiseOffset = new Vector2(perlinNoiseOffset.x + xAnimationSpeed, perlinNoiseOffset.y + yAnimationSpeed);
-            yield return new WaitForSeconds(0.02f);
-        }
     }
 }
