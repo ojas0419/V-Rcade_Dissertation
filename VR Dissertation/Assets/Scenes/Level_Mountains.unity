@@ -400,8 +400,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 443399607}
-  - component: {fileID: 443399606}
   - component: {fileID: 443399605}
+  - component: {fileID: 443399606}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -421,16 +421,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144652279558c76479d952fcf5bf69e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 87e3762ce29fdb648b8281078b90ef41, type: 3}
+  enemyLifetime: 21
+  maxEnemyTypes: 5
   enemies:
   - {fileID: 3928120562359326140, guid: 434ee134e26509e43b869c60c01cc39d, type: 3}
   - {fileID: 5384782537953618537, guid: a0fef8dd12b86984485a7850a41bd02e, type: 3}
+  - {fileID: 5145640630480640539, guid: bd6c26c32571360469d229a5607c5d82, type: 3}
+  - {fileID: 9031368366347152141, guid: 53142012c6df43947aa6aa4bd7964da7, type: 3}
+  - {fileID: 3615938319912519989, guid: 117e75e0d44ffe940893b1b13eccca7b, type: 3}
+  maxSpawnLocations: 4
   points:
   - {fileID: 308657264}
   - {fileID: 1334447055}
   - {fileID: 640397579}
   - {fileID: 1172727640}
   beat: 0.7017544
+  audioClip: {fileID: 8300000, guid: 87e3762ce29fdb648b8281078b90ef41, type: 3}
 --- !u!82 &443399606
 AudioSource:
   m_ObjectHideFlags: 0
