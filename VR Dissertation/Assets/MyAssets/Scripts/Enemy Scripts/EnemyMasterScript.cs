@@ -1,19 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyMasterScript : MonoBehaviour
 {
     #region Enemy Data
-    public int health = 5;
+    [Header("Enemy Stats")]
+    private Transform player;        // The target to look and aim at
+    public int health = 5;          // The enemy's health
     private int currentHP;
 
     public int pointsWorth;         // Define how many points you get for killing this enemy in inspector
 
     private Color originalColour;   // For grabbing material colour and changing it when hit
+
+    [Header("Enemy Flight Path Setup")]
+    private int index = 0;
+    private Transform[] LocationCoords;
+    private int[] shootLocations;
+
+    [Header("Enemy Travel Speed")]
+    public float NormalSpeed = 10f;
+    private float normalSpeed = 10f;
+
+    [Header("Enemy Attack Setup")]
+    public GameObject Barrel;
+    public GameObject laser;
+
+    [SerializeField]
+    private float shootPower = 1000f;
+    [SerializeField]
+    private float fireRate = 2f;
+    [SerializeField]
+    private float nextFire = 0.0f;
+
+    public AudioSource source;
+    public AudioClip laserSound;
+
     #endregion Enemy Data
 
     #region Creating Pieces
+    [Header("Explode Into Cubes")]
     //// If you want to create smaller copy of the object, use this: !!
     //public GameObject piecePrefab;
 
@@ -30,9 +58,19 @@ public class EnemyMasterScript : MonoBehaviour
     //public Material material;   // this is only needed if changing the colour of pieces created
     #endregion Creating Pieces
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        // Add to list of enemies
+        SpawnerTimed.numberOfActiveEnemies++;
+    }
+
     void Start()
     {
+        // Access Enemy Manager object and EnemyManager script to get the following variables:
+        player = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().targetPlayer;
+        LocationCoords = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().flightPath;
+        shootLocations = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().firingSpots;
+
         // Get material colour of object
         originalColour = GetComponent<Renderer>().material.color;
 
@@ -43,11 +81,85 @@ public class EnemyMasterScript : MonoBehaviour
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Move forward at a constant speed
-        transform.position += Time.deltaTime * transform.forward * 2;
+        // Face main camera, aka player
+        transform.forward = Vector3.ProjectOnPlane((Camera.main.transform.position - transform.position), Vector3.up).normalized;
+
+        Move();
+    }
+
+    public void OnDestroy()
+    {
+        // Remove enemy from list
+        SpawnerTimed.numberOfActiveEnemies -= 1;
+    }
+
+    private void Move()
+    {
+        // Face player / main camera
+        transform.LookAt(Camera.main.transform.position);
+
+        // Rotate...for something?
+        transform.Rotate(new Vector3(-8, 5, 0));
+
+        // Adjust speeds depending on distance between locations
+        if (Vector3.Distance(LocationCoords[index].position, LocationCoords[index + 1].position) < 0.5f)
+        {
+            normalSpeed = NormalSpeed / 4;
+        }
+        else
+        {
+            normalSpeed = NormalSpeed;
+        }
+
+        if (shootLocations.Contains(index) && Time.time > nextFire)
+        {
+            Shoot();
+            nextFire = Time.time + fireRate;
+        }
+
+        // When enemy reaches last location in index...
+        if (index > LocationCoords.Length - 3)
+        {
+            // ... restart from the beginning, or
+            //index = 0;
+
+            // ...Move forward at a constant speed
+            transform.position += Time.deltaTime * transform.forward * 2;
+        }
+
+        // Move enemy to the next location within the index
+        float step = normalSpeed * Time.deltaTime;
+
+        transform.position = Vector3.MoveTowards(transform.position, LocationCoords[index].position, step);
+
+        if (Vector3.Distance(transform.position, LocationCoords[index].position) < 0.001f)
+        {
+            index++;
+        }
+    }
+
+    private void Shoot()
+    {
+        // Instantiate laser from Barrel position and rotate laser to be straight
+        var firedLaser = Instantiate(laser, Barrel.transform.position, Barrel.transform.rotation * Quaternion.Euler(90f, 0f, 0f));
+        //var firedLaser = Instantiate(laser, Barrel.transform.position, Quaternion.identity);
+
+        // Target the player
+        firedLaser.transform.LookAt(player);
+
+        // Calculate trajectory direction
+        Vector3 trajectory = player.position - firedLaser.transform.position;
+
+        // Get rigidbody and add force to laser
+        firedLaser.GetComponent<Rigidbody>().AddForce(Barrel.transform.forward * shootPower);
+
+        // Play laser sound once
+        source.PlayOneShot(laserSound);
+
+        // Destroy laser after 2 seconds
+        Destroy(firedLaser, 2f);
     }
 
     private void OnCollisionEnter(Collision collision)

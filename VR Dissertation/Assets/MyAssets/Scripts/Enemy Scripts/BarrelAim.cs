@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BarrelAim : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
 
-
+    public void Start()
+    {
+        target = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().targetPlayer;
+    }
     // Update is called once per frame
     void Update()
     {

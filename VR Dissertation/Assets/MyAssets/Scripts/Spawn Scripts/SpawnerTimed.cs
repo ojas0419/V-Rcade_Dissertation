@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SpawnerTimed : MonoBehaviour
 {
     public float enemyLifetime;
-    public static int numberOfActiveEnemies;
+    public static int numberOfActiveEnemies = 0;
 
     public int maxEnemyTypes;
     public GameObject[] enemies;        // Array of enemy gameObjects defined in the Unity inspector    
@@ -27,6 +27,17 @@ public class SpawnerTimed : MonoBehaviour
         StartCoroutine(WaitForSound());
     }
 
+    private void FixedUpdate()
+    {
+        if (audioSource.isPlaying == false && numberOfActiveEnemies == 0)
+        {
+            //SceneManager.LoadScene("Main_Menu_Scene", LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("Main_Menu_Scene");
+            Debug.Log("changed scenes");
+        }
+
+        Debug.Log("Number of enemies = " + numberOfActiveEnemies);
+    }
     public void Init()
     {
         audioSource = GetComponent<AudioSource>();
@@ -44,8 +55,6 @@ public class SpawnerTimed : MonoBehaviour
                 // Get random enemy within the range and instantiate it at random position
                 GameObject enemy = Instantiate(enemies[Random.Range(0, maxEnemyTypes)], points[Random.Range(0, maxSpawnLocations)]);
 
-                numberOfActiveEnemies++;
-
                 // To make enemy not move, check its localPosition and set it to 0
                 enemy.transform.localPosition = Vector3.zero;
 
@@ -54,8 +63,6 @@ public class SpawnerTimed : MonoBehaviour
 
                 // Destroy enemies after 21 seconds. Changing spawn location or map size will mean changing this timer
                 Destroy(enemy, enemyLifetime);
-
-                numberOfActiveEnemies--;
 
                 // Update timer
                 timer -= beat;
@@ -66,11 +73,5 @@ public class SpawnerTimed : MonoBehaviour
 
             yield return null;
         }
-
-        // THIS CODE DOES NOT WORK FULLY
-        //if (audioSource.isPlaying == false && numberOfActiveEnemies == 0)
-        //{
-        //    SceneManager.LoadScene("Main_Menu_Scene", LoadSceneMode.Additive);
-        //}
     }
 }

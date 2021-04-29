@@ -11,6 +11,11 @@ public class SkyBoxTintChanger : MonoBehaviour
     float lerpValue = 0;
     bool countUp = true;
 
+    private void Awake()
+    {
+        targetColour = new Color(Random.value, Random.value, Random.value);
+    }
+
     void FixedUpdate()
     {
         //if (timeLeft <= Time.deltaTime)
@@ -25,7 +30,6 @@ public class SkyBoxTintChanger : MonoBehaviour
         //    timeLeft -= Time.deltaTime;
         //}
 
-        targetColour = new Color(Random.value, Random.value, Random.value);
 
         if(lerpValue >= 1)
         {
@@ -35,6 +39,8 @@ public class SkyBoxTintChanger : MonoBehaviour
 
         if(lerpValue <= 0)
         {
+            //targetColour = new Color(Random.value, Random.value, Random.value);
+            targetColour = new Color(Random.Range(0.5f, 1.0f), Random.Range(0.5f, 1.0f), Random.Range(0.5f, 1.0f));
             lerpValue = 0f;
             countUp = true;
         }
@@ -44,6 +50,6 @@ public class SkyBoxTintChanger : MonoBehaviour
         else
             lerpValue -= Time.deltaTime;
 
-        skyMaterial.SetColor("_Tint", Color.Lerp(skyMaterial.color, targetColour, lerpValue));
+        skyMaterial.SetColor("_Tint", Color.Lerp(Color.black, targetColour, lerpValue));
     }
 }
