@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3134118161761281490}
   - component: {fileID: 381867004926146011}
+  - component: {fileID: 1547878206781181660}
   - component: {fileID: 3791463564587084038}
   - component: {fileID: 6728539323799784011}
   m_Layer: 0
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   pointsWorth: 5
+  isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 6728539324245929131}
   laser: {fileID: 4309653835023144289, guid: db6ec93f9d717354f8a590bb57b91b54, type: 3}
@@ -58,11 +60,28 @@ MonoBehaviour:
   nextFire: 0
   source: {fileID: 6728539324065839792}
   laserSound: {fileID: 8300000, guid: ebc94b236ecc4ce40823275cab43fe9c, type: 3}
+  deathAnimation: {fileID: 1547878206781181660}
+--- !u!114 &1547878206781181660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320848527469707112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20d4d739cf5e9f42b538da051480db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createMiniCopies: 0
+  piecePrefab: {fileID: 0}
   cubeSize: 0.2
   cubesInRow: 5
   explosionForce: 50
   explosionRadius: 4
   explosionUpward: 0.4
+  useOriginalPrefabMaterial: 0
+  newMaterialColour: {r: 0.003921569, g: 0.227451, b: 0.8862746, a: 1}
 --- !u!23 &3791463564587084038
 MeshRenderer:
   m_ObjectHideFlags: 0

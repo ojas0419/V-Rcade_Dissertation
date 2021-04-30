@@ -14,20 +14,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 534aedee6f166214bb5bfd4aa789f2eb, type: 3}
---- !u!64 &1560404184
-MeshCollider:
+--- !u!114 &146846664624595047
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5974022463256802994}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3949de7094bbd44b802d0cb93a3d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterScript: {fileID: 2290222637321152206}
+  torqueRandomMin: -50
+  torqueRandomMax: 50
 --- !u!1001 &1553461647698144425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,6 +77,11 @@ PrefabInstance:
       propertyPath: pointsWorth
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
+        type: 3}
+      propertyPath: deathAnimation
+      value: 
+      objectReference: {fileID: 146846664624595047}
     - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
         type: 3}
       propertyPath: LocationCoords.Array.size
@@ -239,6 +245,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1553461647698144425}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2290222637321152206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
+    type: 3}
+  m_PrefabInstance: {fileID: 1553461647698144425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5974022463256802994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ca8d869f9cce9479651cb8cf1e3d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3416602808902962795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4243858715402232514, guid: bd6c26c32571360469d229a5607c5d82,

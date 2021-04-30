@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00031397157, g: 0.00074749487, b: 0.0006737939, a: 1}
+  m_IndirectSpecularColor: {r: 0.00051885645, g: 0.003366432, b: 0.0030118437, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -503,17 +503,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLifetime: 21
-  maxEnemyTypes: 3
   enemies:
   - {fileID: 2320848527469707112, guid: 11a4d687ac90fad42b86a09e3036004f, type: 3}
   - {fileID: 4097582250586261911, guid: 54d7974dd8361bc4497704d9de7ee7fd, type: 3}
   - {fileID: 5974022463256802994, guid: 472695efb59f63d4e8414aaab2db05a8, type: 3}
-  maxSpawnLocations: 4
-  points:
-  - {fileID: 2112048601}
-  - {fileID: 500759191}
-  - {fileID: 423357099}
-  - {fileID: 1468575652}
+  spawner:
+  - {fileID: 2112048603}
+  - {fileID: 500759193}
+  - {fileID: 423357101}
+  - {fileID: 1468575654}
   beat: 0.9836066
   audioClip: {fileID: 8300000, guid: 5e2c728af5aff224a8558885a3d35bff, type: 3}
 --- !u!82 &167115107
@@ -1419,6 +1417,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 423357099}
+  - component: {fileID: 423357101}
+  - component: {fileID: 423357100}
   m_Layer: 0
   m_Name: SpawnPoint3
   m_TagString: Untagged
@@ -1441,6 +1441,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &423357100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423357098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c9e2887d1379e458f67596acd0ddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPath:
+  - {fileID: 573298624}
+  - {fileID: 598580391}
+  firingSpots: 0300000008000000
+--- !u!114 &423357101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423357098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6f0d844b6928d46b5e8088d0add641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPaths: {fileID: 423357100}
 --- !u!4 &460345244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5056464633073599079, guid: f437390ce56fa834ab01d75d80fdd23a,
@@ -1456,6 +1485,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 500759191}
+  - component: {fileID: 500759193}
+  - component: {fileID: 500759192}
   m_Layer: 0
   m_Name: SpawnPoint2
   m_TagString: Untagged
@@ -1478,6 +1509,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &500759192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500759190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c9e2887d1379e458f67596acd0ddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPath:
+  - {fileID: 573298624}
+  - {fileID: 598580391}
+  - {fileID: 1339073546}
+  - {fileID: 1986689410}
+  firingSpots: 0300000008000000
+--- !u!114 &500759193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500759190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6f0d844b6928d46b5e8088d0add641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPaths: {fileID: 500759192}
 --- !u!1 &573298623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,7 +1687,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-162998
+  m_Name: pb_Mesh-45250
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2918,7 +2980,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-163020
+  m_Name: pb_Mesh-45272
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3972,6 +4034,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1468575652}
+  - component: {fileID: 1468575654}
+  - component: {fileID: 1468575653}
   m_Layer: 0
   m_Name: SpawnPoint4
   m_TagString: Untagged
@@ -3994,6 +4058,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1468575653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468575651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c9e2887d1379e458f67596acd0ddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPath:
+  - {fileID: 573298624}
+  - {fileID: 598580391}
+  - {fileID: 1339073546}
+  - {fileID: 1986689410}
+  - {fileID: 2119564746}
+  - {fileID: 801948214}
+  - {fileID: 741307557}
+  firingSpots: 0300000008000000
+--- !u!114 &1468575654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468575651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6f0d844b6928d46b5e8088d0add641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPaths: {fileID: 1468575653}
 --- !u!1 &1473444916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4217,7 +4315,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-162976
+  m_Name: pb_Mesh-45228
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4758,18 +4856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 663639709}
-  flightPath:
-  - {fileID: 573298624}
-  - {fileID: 598580391}
-  - {fileID: 1339073546}
-  - {fileID: 1986689410}
-  - {fileID: 2119564746}
-  - {fileID: 801948214}
-  - {fileID: 741307557}
-  - {fileID: 1175733178}
-  - {fileID: 1315247783}
-  - {fileID: 915875108}
-  firingSpots: 0100000003000000050000000700000009000000
 --- !u!4 &1589052251
 Transform:
   m_ObjectHideFlags: 0
@@ -4977,7 +5063,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-162954
+  m_Name: pb_Mesh-45206
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6130,6 +6216,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112048601}
+  - component: {fileID: 2112048603}
+  - component: {fileID: 2112048602}
   m_Layer: 0
   m_Name: SpawnPoint1
   m_TagString: Untagged
@@ -6152,6 +6240,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2112048602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112048600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c9e2887d1379e458f67596acd0ddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPath:
+  - {fileID: 573298624}
+  - {fileID: 598580391}
+  - {fileID: 1339073546}
+  - {fileID: 1986689410}
+  - {fileID: 2119564746}
+  - {fileID: 801948214}
+  - {fileID: 741307557}
+  - {fileID: 1175733178}
+  - {fileID: 1315247783}
+  - {fileID: 915875108}
+  firingSpots: 0300000008000000
+--- !u!114 &2112048603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112048600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6f0d844b6928d46b5e8088d0add641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flightPaths: {fileID: 2112048602}
 --- !u!1 &2119564745
 GameObject:
   m_ObjectHideFlags: 0
