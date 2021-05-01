@@ -54,7 +54,7 @@ MonoBehaviour:
   isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 6728539324245929131}
-  laser: {fileID: 4309653835023144289, guid: db6ec93f9d717354f8a590bb57b91b54, type: 3}
+  laser: {fileID: 191804, guid: 9e2231fe9d5173c458fb1e5bd8da69d8, type: 3}
   shootPower: 1000
   fireRate: 2
   nextFire: 0
@@ -162,7 +162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6728539324065839695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 1.5}
+  m_LocalPosition: {x: 0, y: 3, z: 1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3134118161761281490}
@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6728539324245929131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 1.5}
+  m_LocalPosition: {x: 0, y: 3, z: 1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3134118161761281490}

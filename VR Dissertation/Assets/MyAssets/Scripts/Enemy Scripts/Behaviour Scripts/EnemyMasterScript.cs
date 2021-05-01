@@ -36,6 +36,7 @@ public class EnemyMasterScript : MonoBehaviour
     [SerializeField]
     private float nextFire = 0.0f;
 
+    public bool useAttachedAudio = false;
     public AudioSource source;
     public AudioClip laserSound;
 
@@ -173,8 +174,12 @@ public class EnemyMasterScript : MonoBehaviour
             // Get rigidbody and add force to laser
             firedLaser.GetComponent<Rigidbody>().AddForce(Barrel.transform.forward * shootPower);
 
-            // Play laser sound once
-            source.PlayOneShot(laserSound);
+            // If we are using an attached AudioSource and Clip
+            if(useAttachedAudio == true)
+            {
+                // Play laser sound once
+                source.PlayOneShot(laserSound);
+            }
 
             // Destroy laser after 2 seconds
             Destroy(firedLaser, 2f);

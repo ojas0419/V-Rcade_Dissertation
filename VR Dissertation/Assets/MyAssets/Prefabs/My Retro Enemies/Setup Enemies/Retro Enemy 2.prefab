@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789235934312635550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2552, z: 1.674}
+  m_LocalPosition: {x: 0, y: 0.2552, z: 2.259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3717257448266109741}
@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789235934688246608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2552, z: 1.674}
+  m_LocalPosition: {x: 0, y: 0.2552, z: 2.259001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3717257448266109741}
@@ -220,19 +220,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 8
   pointsWorth: 15
+  isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 789235934688246608}
-  laser: {fileID: 4309653835023144289, guid: db6ec93f9d717354f8a590bb57b91b54, type: 3}
+  laser: {fileID: 191804, guid: b4bf48d7cea5f684e83f59f03b51fec1, type: 3}
   shootPower: 1000
   fireRate: 2
   nextFire: 0
+  useAttachedAudio: 0
   source: {fileID: 789235934312635551}
   laserSound: {fileID: 8300000, guid: cd090745ff8042942af6b4a023d9bdaf, type: 3}
-  cubeSize: 0.2
-  cubesInRow: 5
-  explosionForce: 50
-  explosionRadius: 4
-  explosionUpward: 0.4
+  deathAnimation: {fileID: 0}
 --- !u!23 &7654652748685526449
 MeshRenderer:
   m_ObjectHideFlags: 0

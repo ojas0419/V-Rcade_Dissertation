@@ -9,7 +9,8 @@ public class Ragdoll_Death : DeathAnimation
     // Torque values for ragdoll behaviour
     public float torqueRandomMin = -1.0f;
     public float torqueRandomMax = 1.0f;
-        public void Start()
+
+    public void Start()
     {
         // Grab the EnemyMasterScript
         masterScript = GetComponent<EnemyMasterScript>();
