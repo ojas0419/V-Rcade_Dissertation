@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &710812346
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3416602808902962795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 534aedee6f166214bb5bfd4aa789f2eb, type: 3}
 --- !u!114 &146846664624595047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,20 +29,6 @@ MonoBehaviour:
   masterScript: {fileID: 2290222637321152206}
   torqueRandomMin: -50
   torqueRandomMax: 50
---- !u!64 &710812346
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3416602808902962795}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 534aedee6f166214bb5bfd4aa789f2eb, type: 3}
 --- !u!1001 &1553461647698144425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78,6 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
         type: 3}
+      propertyPath: laserLifetime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
+        type: 3}
       propertyPath: deathAnimation
       value: 
       objectReference: {fileID: 146846664624595047}
@@ -85,6 +90,11 @@ PrefabInstance:
         type: 3}
       propertyPath: LocationCoords.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
+        type: 3}
+      propertyPath: maxZAxisDistanceBeforeDeath
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
         type: 3}
@@ -160,6 +170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skull 2-0-thresh face Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145640630480640539, guid: bd6c26c32571360469d229a5607c5d82,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5452318645401559699, guid: bd6c26c32571360469d229a5607c5d82,
         type: 3}

@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 public class SpawnerTimed : MonoBehaviour
 {
     public float enemyLifetime;
+    public float enemyScale = 1.0f;     // Set the scale for enemies
     public static int numberOfActiveEnemies = 0;
 
-    private int maxEnemyTypes;           // Number of maximum types of enemies
+    private int maxEnemyTypes;          // Number of maximum types of enemies
     public GameObject[] enemies;        // Array of enemy gameObjects defined in the Unity inspector    
 
     private int maxSpawnLocations;      // Number of maximum spawn locations
@@ -44,6 +45,7 @@ public class SpawnerTimed : MonoBehaviour
 
         Debug.Log("Number of enemies = " + numberOfActiveEnemies);
     }
+
     public void Init()
     {
         audioSource = GetComponent<AudioSource>();
@@ -62,6 +64,9 @@ public class SpawnerTimed : MonoBehaviour
 
                 // Get random enemy within the range and instantiate it at random position
                 GameObject enemy = Instantiate(enemies[Random.Range(0, maxEnemyTypes)], spawner[randomSpawn].transform);
+
+                // Set scale of enemies to whatever value we want
+                enemy.transform.localScale = new Vector3(enemyScale, enemyScale, enemyScale);
 
                 // Associate the spawner with a specific flight path
                 enemy.GetComponent<EnemyMasterScript>().SetFlightPath(spawner[randomSpawn].flightPaths);

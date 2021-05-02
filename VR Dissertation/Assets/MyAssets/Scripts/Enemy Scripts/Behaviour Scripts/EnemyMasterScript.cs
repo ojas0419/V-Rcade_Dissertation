@@ -7,12 +7,10 @@ public class EnemyMasterScript : MonoBehaviour
 {
     #region Enemy Data
     [Header("Enemy Stats")]
-    private Transform player;        // The target to look and aim at
+    private Transform player;       // The target to look and aim at
     public int health = 5;          // The enemy's health
-    private int currentHP;
-
     public int pointsWorth;         // Define how many points you get for killing this enemy in inspector
-
+    private int deathAtChosenAxisLocation;         // Determines how far along the Z-axis an enemy can travel before it is destroyed
     private Color originalColour;   // For grabbing material colour and changing it when hit
 
     [Header("Enemy Flight Path Setup")]
@@ -28,6 +26,7 @@ public class EnemyMasterScript : MonoBehaviour
     [Header("Enemy Attack Setup")]
     public GameObject Barrel;
     public GameObject laser;
+    public float laserLifetime = 2f;
 
     [SerializeField]
     private float shootPower = 1000f;
@@ -39,19 +38,10 @@ public class EnemyMasterScript : MonoBehaviour
     public bool useAttachedAudio = false;
     public AudioSource source;
     public AudioClip laserSound;
+    public AudioClip deathSound;
 
     public DeathAnimation deathAnimation;
     #endregion Enemy Data
-
-    public void FixedUpdate()   // ONLY FOR TESTING ENEMY DEATHS. Comment out when testing is not needed
-    {
-        if (health <= 0)                                    // if health is 0 or lower
-        {
-            ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
-            deathAnimation.RunDeathAnimation();             // Execute explosion
-        }
-
-    }
 
     private void Awake()
     {
@@ -67,6 +57,24 @@ public class EnemyMasterScript : MonoBehaviour
         // Get material colour of object
         originalColour = GetComponent<Renderer>().material.color;
 
+        // Access Enemy Manager to get the coordinate at which enemies will be destroyed
+        deathAtChosenAxisLocation = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().maxZAxisDistanceBeforeDeath;
+    }
+
+    public void FixedUpdate()
+    {
+        // ONLY FOR TESTING ENEMY DEATHS. Comment out when testing is not needed
+        if (health <= 0)                                    // if health is 0 or lower
+        {
+            ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
+            deathAnimation.RunDeathAnimation();             // Execute explosion
+        }
+
+        // Destroy the enemy when it goes beyond the Z-axis coordinate
+        if (transform.position.z <= deathAtChosenAxisLocation)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
@@ -129,7 +137,7 @@ public class EnemyMasterScript : MonoBehaviour
         }
 
         // When enemy reaches last location in index...
-        if (index > LocationCoords.Length - 3)
+        if (index > LocationCoords.Length - 3)          // this needs fixing, it does not go to the final location
         {
             // ... restart from the beginning, or
             //index = 0;
@@ -182,7 +190,7 @@ public class EnemyMasterScript : MonoBehaviour
             }
 
             // Destroy laser after 2 seconds
-            Destroy(firedLaser, 2f);
+            Destroy(firedLaser, laserLifetime);
 
             nextFire = Time.time + fireRate;
         }
@@ -200,6 +208,7 @@ public class EnemyMasterScript : MonoBehaviour
             }
             if (health <= 0)                                    // ...if health is 0 or lower, execute this instead
             {
+                source.PlayOneShot(deathSound);                 // Play death sound
                 Destroy(collision.gameObject);                  // Destroy the object tagged "Bullet"
                 ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
                 deathAnimation.RunDeathAnimation();             // Access DeathAnimation script to enable chosen death behaviour

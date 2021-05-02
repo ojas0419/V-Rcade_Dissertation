@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 789235934265192886}
   m_Layer: 0
   m_Name: Retro Enemy 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,16 +220,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 8
   pointsWorth: 15
+  maxZAxisDistanceBeforeDeath: -15
   isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 789235934688246608}
   laser: {fileID: 191804, guid: b4bf48d7cea5f684e83f59f03b51fec1, type: 3}
+  laserLifetime: 4
   shootPower: 1000
   fireRate: 2
   nextFire: 0
   useAttachedAudio: 0
   source: {fileID: 789235934312635551}
   laserSound: {fileID: 8300000, guid: cd090745ff8042942af6b4a023d9bdaf, type: 3}
+  deathSound: {fileID: 0}
   deathAnimation: {fileID: 0}
 --- !u!23 &7654652748685526449
 MeshRenderer:

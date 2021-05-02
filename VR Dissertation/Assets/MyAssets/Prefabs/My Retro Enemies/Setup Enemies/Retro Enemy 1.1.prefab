@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6728539323799784011}
   m_Layer: 0
   m_Name: Retro Enemy 1.1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,15 +51,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   pointsWorth: 5
+  maxZAxisDistanceBeforeDeath: -15
   isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 6728539324245929131}
   laser: {fileID: 191804, guid: 9e2231fe9d5173c458fb1e5bd8da69d8, type: 3}
+  laserLifetime: 4
   shootPower: 1000
   fireRate: 2
   nextFire: 0
+  useAttachedAudio: 0
   source: {fileID: 6728539324065839792}
   laserSound: {fileID: 8300000, guid: ebc94b236ecc4ce40823275cab43fe9c, type: 3}
+  deathSound: {fileID: 0}
   deathAnimation: {fileID: 1547878206781181660}
 --- !u!114 &1547878206781181660
 MonoBehaviour:
