@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class SlowMotionZone : MonoBehaviour
 {
-    public AudioClip slowMotionSound;
-    public AudioSource source;
+    //public AudioClip slowMotionSound;
+    //public AudioSource source;
 
     public float slowMotionSpeed = 0.1f;
+    public float slowDownAudio = 0.1f;
+    private AudioSource LevelMusic;
+
+    public void Start()
+    {
+        // Get the audio clip for the level's music
+        LevelMusic = GameObject.Find("SpawnerManager").GetComponent<SpawnerTimed>().audioSource;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,8 +31,16 @@ public class SlowMotionZone : MonoBehaviour
             // Multiply velocity by the slow motion speed
             laser.GetComponent<Rigidbody>().velocity = laserSpeed * slowMotionSpeed;
 
-            // Play the slow motion sound once
-            source.PlayOneShot(slowMotionSound);
+            //// Get all audio sources in children and slow down their pitch
+            //foreach(AudioSource audioSource in GetComponentsInChildren<AudioSource>())
+            //{
+            //    audioSource.pitch = slowDownAudio;
+            //}
+
+            //LevelMusic.pitch = slowDownAudio;
+
+            //// Play the slow motion sound once
+            //source.PlayOneShot(slowMotionSound);
         }
     }
 }

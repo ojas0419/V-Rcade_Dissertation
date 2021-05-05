@@ -64,11 +64,11 @@ public class EnemyMasterScript : MonoBehaviour
     public void FixedUpdate()
     {
         // ONLY FOR TESTING ENEMY DEATHS. Comment out when testing is not needed
-        if (health <= 0)                                    // if health is 0 or lower
-        {
-            ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
-            deathAnimation.RunDeathAnimation();             // Execute explosion
-        }
+        //if (health <= 0)                                    // if health is 0 or lower
+        //{
+        //    ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
+        //    deathAnimation.RunDeathAnimation();             // Execute explosion
+        //}
 
         // Destroy the enemy when it goes beyond the Z-axis coordinate
         if (transform.position.z <= deathAtChosenAxisLocation)
@@ -112,7 +112,7 @@ public class EnemyMasterScript : MonoBehaviour
         // Face player / main camera
         transform.LookAt(Camera.main.transform.position);
 
-        // Rotate...for something?
+        // Rotate for correct alignment
         transform.Rotate(new Vector3(-8, 5, 0));
     }
 
@@ -126,6 +126,19 @@ public class EnemyMasterScript : MonoBehaviour
     {
         FacePlayer();
 
+        // When enemy reaches last location in index...
+        if (index >= LocationCoords.Length - 1)          // this needs fixing, it does not go to the final location
+        {
+            // ... restart from the beginning, or
+            //index = 0;            
+
+            // set moving forward to true to enable MoveForward
+            isMovingForward = true;
+
+            // stop execution of this function
+            return;
+        }
+
         // Adjust speeds depending on distance between locations
         if (Vector3.Distance(LocationCoords[index].position, LocationCoords[index + 1].position) < 0.5f)
         {
@@ -136,15 +149,6 @@ public class EnemyMasterScript : MonoBehaviour
             normalSpeed = NormalSpeed;
         }
 
-        // When enemy reaches last location in index...
-        if (index > LocationCoords.Length - 3)          // this needs fixing, it does not go to the final location
-        {
-            // ... restart from the beginning, or
-            //index = 0;
-
-            // set moving forward to true to enable MoveForward
-            isMovingForward = true;
-        }
 
         // Move enemy to the next location within the index
         float step = normalSpeed * Time.deltaTime;
@@ -218,6 +222,17 @@ public class EnemyMasterScript : MonoBehaviour
 
     public IEnumerator ColourFlash()
     {
+        foreach(Renderer renderer in GetComponentsInChildren<Renderer>())
+        {
+            renderer.material.color = Color.red;
+
+            // ...for 0.1 seconds...
+            yield return new WaitForSeconds(0.1f);
+
+            // ...then reset material colour back to the original colour...
+            renderer.material.color = originalColour;
+        }
+
         // Get material colour and make it red...
         GetComponent<Renderer>().material.color = Color.red;
 

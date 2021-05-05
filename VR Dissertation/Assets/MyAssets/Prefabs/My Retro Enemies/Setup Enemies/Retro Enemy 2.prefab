@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 3498396655644351371}
   - component: {fileID: 7654652748685526449}
   - component: {fileID: 789235934265192886}
+  - component: {fileID: 5574474551407877331}
   m_Layer: 0
   m_Name: Retro Enemy 2
   m_TagString: Enemy
@@ -220,7 +221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 8
   pointsWorth: 15
-  maxZAxisDistanceBeforeDeath: -15
   isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 789235934688246608}
@@ -284,11 +284,24 @@ MeshCollider:
   m_GameObject: {fileID: 4097582250586261911}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &5574474551407877331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097582250586261911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.842662, y: 2.607594, z: 2.5407848}
+  m_Center: {x: -0.00044488907, y: 1.2857482, z: 0.259614}
 --- !u!1 &4994565347441946958
 GameObject:
   m_ObjectHideFlags: 0

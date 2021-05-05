@@ -4992,11 +4992,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   pointsWorth: 25
-  cubeSize: 0.2
-  cubesInRow: 5
-  explosionForce: 50
-  explosionRadius: 4
-  explosionUpward: 0.4
+  isMovingForward: 0
+  NormalSpeed: 10
+  Barrel: {fileID: 0}
+  laser: {fileID: 0}
+  laserLifetime: 2
+  shootPower: 1000
+  fireRate: 2
+  nextFire: 0
+  useAttachedAudio: 0
+  source: {fileID: 0}
+  laserSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  deathAnimation: {fileID: 0}
 --- !u!1 &7928958696045161569
 GameObject:
   m_ObjectHideFlags: 0

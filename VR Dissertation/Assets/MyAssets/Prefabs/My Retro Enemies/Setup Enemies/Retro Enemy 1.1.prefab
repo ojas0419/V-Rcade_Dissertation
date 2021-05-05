@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1547878206781181660}
   - component: {fileID: 3791463564587084038}
   - component: {fileID: 6728539323799784011}
+  - component: {fileID: 7289511665022869129}
   m_Layer: 0
   m_Name: Retro Enemy 1.1
   m_TagString: Enemy
@@ -27,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2320848527469707112}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.9346156, y: -0.99999976, z: 14.507154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2526145481125172362}
@@ -51,7 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   pointsWorth: 5
-  maxZAxisDistanceBeforeDeath: -15
   isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 6728539324245929131}
@@ -136,11 +136,24 @@ MeshCollider:
   m_GameObject: {fileID: 2320848527469707112}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &7289511665022869129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320848527469707112}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4909089, y: 3.2494664, z: 2.4587662}
+  m_Center: {x: -0.006881118, y: 3.0479019, z: 0.0000010728836}
 --- !u!1 &6728539324065839695
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,13 +19,14 @@ public class SpawnerTimed : MonoBehaviour
     public float beat = (60/130)*2;     // Time when enemies are instantiated = (one minute / beats per minute) x 2
     private float timer;                // Timer between beats and spawning of enemies
     public AudioClip audioClip;         // Get Audio Clip    
-    private AudioSource audioSource;    // Get Audio Source    
+    public AudioSource audioSource;    // Get Audio Source    
     private float duration;             // Duration of audio    
 
     public void Start()
     {
         maxEnemyTypes = enemies.Length;
         maxSpawnLocations = spawner.Length;
+        //audioSource.pitch = 1.0f;
     }
 
     private void Awake()
