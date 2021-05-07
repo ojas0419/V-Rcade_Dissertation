@@ -63,7 +63,7 @@ MonoBehaviour:
   useAttachedAudio: 0
   source: {fileID: 6728539324065839792}
   laserSound: {fileID: 8300000, guid: ebc94b236ecc4ce40823275cab43fe9c, type: 3}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 73b4d4835d20581409d49b6a14b2b7f6, type: 3}
   deathAnimation: {fileID: 1547878206781181660}
 --- !u!114 &1547878206781181660
 MonoBehaviour:

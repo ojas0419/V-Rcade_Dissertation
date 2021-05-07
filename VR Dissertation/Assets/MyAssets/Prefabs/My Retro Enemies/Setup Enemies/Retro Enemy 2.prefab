@@ -232,7 +232,7 @@ MonoBehaviour:
   useAttachedAudio: 0
   source: {fileID: 789235934312635551}
   laserSound: {fileID: 8300000, guid: cd090745ff8042942af6b4a023d9bdaf, type: 3}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: e43c8eb863e50cf4dbb1a8d9aacb34af, type: 3}
   deathAnimation: {fileID: 0}
 --- !u!23 &7654652748685526449
 MeshRenderer:
