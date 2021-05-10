@@ -10,7 +10,8 @@ public class EnemyMasterScript : MonoBehaviour
     private Transform player;       // The target to look and aim at
     public int health = 5;          // The enemy's health
     public int pointsWorth;         // Define how many points you get for killing this enemy in inspector
-    private int deathAtChosenAxisLocation;         // Determines how far along the Z-axis an enemy can travel before it is destroyed
+    private int deathAtYPoint;      // Determines how far along the Y-axis an enemy can travel before it is destroyed
+    private int deathAtZPoint;      // Determines how far along the Z-axis an enemy can travel before it is destroyed
     private Color originalColour;   // For grabbing material colour and changing it when hit
 
     [Header("Enemy Flight Path Setup")]
@@ -35,10 +36,12 @@ public class EnemyMasterScript : MonoBehaviour
     [SerializeField]
     private float nextFire = 0.0f;
 
-    public bool useAttachedAudio = false;
-    public AudioSource source;
-    public AudioClip laserSound;
+    public AudioSource sourceDeath;
     public AudioClip deathSound;
+
+    public bool useDifferentLaserAudio = false; // If a laser prefab already has audio set up, don't use the source or clip attached
+    public AudioSource sourceLaser;
+    public AudioClip laserSound;
 
     public DeathAnimation deathAnimation;
     #endregion Enemy Data
@@ -58,20 +61,26 @@ public class EnemyMasterScript : MonoBehaviour
         originalColour = GetComponent<Renderer>().material.color;
 
         // Access Enemy Manager to get the coordinate at which enemies will be destroyed
-        deathAtChosenAxisLocation = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().maxZAxisDistanceBeforeDeath;
+        deathAtYPoint = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().maxYAxisDistanceBeforeDeath;
+        deathAtZPoint = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().maxZAxisDistanceBeforeDeath;
     }
 
     public void FixedUpdate()
     {
         // ONLY FOR TESTING ENEMY DEATHS. Comment out when testing is not needed
-        //if (health <= 0)                                    // if health is 0 or lower
-        //{
-        //    ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
-        //    deathAnimation.RunDeathAnimation();             // Execute explosion
-        //}
+        if (health <= 0)                                    // if health is 0 or lower
+        {
+            sourceDeath.PlayOneShot(deathSound);            // Play death sound
+            ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
+            deathAnimation.RunDeathAnimation();             // Execute explosion
+        }
 
-        // Destroy the enemy when it goes beyond the Z-axis coordinate
-        if (transform.position.z <= deathAtChosenAxisLocation)
+        // Destroy the enemy when it goes beyond the Z-axis or Y-axis coordinate
+        if (transform.position.z <= deathAtZPoint)
+        {
+            Destroy(gameObject);
+        }
+        if (transform.position.y <= deathAtYPoint)
         {
             Destroy(gameObject);
         }
@@ -149,7 +158,6 @@ public class EnemyMasterScript : MonoBehaviour
             normalSpeed = NormalSpeed;
         }
 
-
         // Move enemy to the next location within the index
         float step = normalSpeed * Time.deltaTime;
 
@@ -187,10 +195,10 @@ public class EnemyMasterScript : MonoBehaviour
             firedLaser.GetComponent<Rigidbody>().AddForce(Barrel.transform.forward * shootPower);
 
             // If we are using an attached AudioSource and Clip
-            if(useAttachedAudio == true)
+            if(useDifferentLaserAudio == true)
             {
                 // Play laser sound once
-                source.PlayOneShot(laserSound);
+                sourceLaser.PlayOneShot(laserSound);
             }
 
             // Destroy laser after 2 seconds
@@ -212,7 +220,7 @@ public class EnemyMasterScript : MonoBehaviour
             }
             if (health <= 0)                                    // ...if health is 0 or lower, execute this instead
             {
-                source.PlayOneShot(deathSound);                 // Play death sound
+                sourceDeath.PlayOneShot(deathSound);            // Play death sound
                 Destroy(collision.gameObject);                  // Destroy the object tagged "Bullet"
                 ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
                 deathAnimation.RunDeathAnimation();             // Access DeathAnimation script to enable chosen death behaviour

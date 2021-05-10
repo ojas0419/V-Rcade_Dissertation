@@ -20,7 +20,6 @@ public class SpawnerTimed : MonoBehaviour
     private float timer;                // Timer between beats and spawning of enemies
     public AudioClip audioClip;         // Get Audio Clip    
     public AudioSource audioSource;    // Get Audio Source    
-    private float duration;             // Duration of audio    
 
     public void Start()
     {
@@ -52,7 +51,6 @@ public class SpawnerTimed : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = audioClip;
         audioSource.Play();
-        duration = audioClip.length;
     }
 
     IEnumerator WaitForSound()
