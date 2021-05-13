@@ -21,11 +21,15 @@ public class SpawnerTimed : MonoBehaviour
     public AudioClip audioClip;         // Get Audio Clip    
     public AudioSource audioSource;    // Get Audio Source    
 
+    private ScoreScript scoreScript;
+
     public void Start()
     {
         maxEnemyTypes = enemies.Length;
         maxSpawnLocations = spawner.Length;
         //audioSource.pitch = 1.0f;
+
+        scoreScript = GameObject.Find("Score_Canvas").GetComponentInChildren<ScoreScript>();
     }
 
     private void Awake()
@@ -39,11 +43,22 @@ public class SpawnerTimed : MonoBehaviour
         if (audioSource.isPlaying == false && numberOfActiveEnemies == 0)
         {
             //SceneManager.LoadScene("Main_Menu_Scene", LoadSceneMode.Additive);
+            SaveScore();
             SceneManager.LoadSceneAsync("Main_Menu_Scene");
             Debug.Log("changed scenes");
         }
 
         Debug.Log("Number of enemies = " + numberOfActiveEnemies);
+    }
+
+    public void SaveScore()
+    {
+        // If the score is greater than the saved high score value (0 as default score)
+        if(scoreScript.scoreValue > PlayerPrefs.GetInt(SceneManager.GetActiveScene().name, 0))
+        {
+            // Save score with scene name as the key and the score as the value
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, scoreScript.scoreValue);
+        }
     }
 
     public void Init()

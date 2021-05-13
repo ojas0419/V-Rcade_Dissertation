@@ -10,8 +10,6 @@ public class EnemyMasterScript : MonoBehaviour
     private Transform player;       // The target to look and aim at
     public int health = 5;          // The enemy's health
     public int pointsWorth;         // Define how many points you get for killing this enemy in inspector
-    private int deathAtYPoint;      // Determines how far along the Y-axis an enemy can travel before it is destroyed
-    private int deathAtZPoint;      // Determines how far along the Z-axis an enemy can travel before it is destroyed
     private Color originalColour;   // For grabbing material colour and changing it when hit
 
     [Header("Enemy Flight Path Setup")]
@@ -36,14 +34,15 @@ public class EnemyMasterScript : MonoBehaviour
     [SerializeField]
     private float nextFire = 0.0f;
 
+    [Header("Enemy Death Setup")]
     public AudioSource sourceDeath;
     public AudioClip deathSound;
-
     public bool useDifferentLaserAudio = false; // If a laser prefab already has audio set up, don't use the source or clip attached
     public AudioSource sourceLaser;
     public AudioClip laserSound;
-
     public DeathAnimation deathAnimation;
+
+    private ScoreScript scoreScript;
     #endregion Enemy Data
 
     private void Awake()
@@ -60,9 +59,8 @@ public class EnemyMasterScript : MonoBehaviour
         // Get material colour of object
         originalColour = GetComponent<Renderer>().material.color;
 
-        // Access Enemy Manager to get the coordinate at which enemies will be destroyed
-        deathAtYPoint = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().maxYAxisDistanceBeforeDeath;
-        deathAtZPoint = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().maxZAxisDistanceBeforeDeath;
+        // Access Score Canvas object and ScoreScript
+        scoreScript = GameObject.Find("Score_Canvas").GetComponentInChildren<ScoreScript>();
     }
 
     public void FixedUpdate()
@@ -71,18 +69,8 @@ public class EnemyMasterScript : MonoBehaviour
         if (health <= 0)                                    // if health is 0 or lower
         {
             sourceDeath.PlayOneShot(deathSound);            // Play death sound
-            ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
+            scoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
             deathAnimation.RunDeathAnimation();             // Execute explosion
-        }
-
-        // Destroy the enemy when it goes beyond the Z-axis or Y-axis coordinate
-        if (transform.position.z <= deathAtZPoint)
-        {
-            Destroy(gameObject);
-        }
-        if (transform.position.y <= deathAtYPoint)
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -222,7 +210,7 @@ public class EnemyMasterScript : MonoBehaviour
             {
                 sourceDeath.PlayOneShot(deathSound);            // Play death sound
                 Destroy(collision.gameObject);                  // Destroy the object tagged "Bullet"
-                ScoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
+                scoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
                 deathAnimation.RunDeathAnimation();             // Access DeathAnimation script to enable chosen death behaviour
             }
         }

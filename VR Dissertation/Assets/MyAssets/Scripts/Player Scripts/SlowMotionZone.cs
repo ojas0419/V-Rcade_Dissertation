@@ -13,8 +13,8 @@ public class SlowMotionZone : MonoBehaviour
 
     public void Start()
     {
-        // Get the audio clip for the level's music
-        LevelMusic = GameObject.Find("SpawnerManager").GetComponent<SpawnerTimed>().audioSource;
+        //// Get the audio clip for the level's music
+        //LevelMusic = GameObject.Find("SpawnerManager").GetComponent<SpawnerTimed>().audioSource;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,12 +32,15 @@ public class SlowMotionZone : MonoBehaviour
             laser.GetComponent<Rigidbody>().velocity = laserSpeed * slowMotionSpeed;
 
             //// Get all audio sources in children and slow down their pitch
-            //foreach(AudioSource audioSource in GetComponentsInChildren<AudioSource>())
+            //foreach (AudioSource audioSource in GetComponentsInChildren<AudioSource>())
             //{
-            //    audioSource.pitch = slowDownAudio;
+            //    audioSource.pitch *= slowDownAudio;
             //}
 
-            //LevelMusic.pitch = slowDownAudio;
+            //LevelMusic.pitch *= slowDownAudio;
+
+            // Use this to return pitch back to original value (assign it to something first)
+            //1 / slowDownAudio;
 
             //// Play the slow motion sound once
             //source.PlayOneShot(slowMotionSound);

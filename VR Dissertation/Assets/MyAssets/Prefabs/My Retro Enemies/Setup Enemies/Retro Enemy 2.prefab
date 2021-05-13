@@ -180,6 +180,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3717257448266109741}
   - component: {fileID: 3498396655644351371}
+  - component: {fileID: 4777798696706567589}
+  - component: {fileID: 2286626555657022370}
   - component: {fileID: 7654652748685526449}
   - component: {fileID: 789235934265192886}
   - component: {fileID: 5574474551407877331}
@@ -215,7 +217,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4097582250586261911}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39ca8d869f9cce9479651cb8cf1e3d7d, type: 3}
   m_Name: 
@@ -226,16 +228,45 @@ MonoBehaviour:
   NormalSpeed: 5
   Barrel: {fileID: 789235934688246608}
   laser: {fileID: 191804, guid: b4bf48d7cea5f684e83f59f03b51fec1, type: 3}
-  laserLifetime: 4
+  laserLifetime: 10
   shootPower: 1000
   fireRate: 2
   nextFire: 0
   sourceDeath: {fileID: 5157708093922323740}
   deathSound: {fileID: 8300000, guid: e43c8eb863e50cf4dbb1a8d9aacb34af, type: 3}
-  useAttachedAudio: 0
+  useDifferentLaserAudio: 0
   sourceLaser: {fileID: 0}
   laserSound: {fileID: 8300000, guid: cd090745ff8042942af6b4a023d9bdaf, type: 3}
-  deathAnimation: {fileID: 0}
+  deathAnimation: {fileID: 2286626555657022370}
+--- !u!114 &4777798696706567589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097582250586261911}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca09fe24ba51f704296cbf49e95a1545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2286626555657022370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4097582250586261911}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae63fdd8f266e84389077a54ba9021b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseStrength: 0.25
+  objectHeight: 1
+  startCutoff: 13
+  deathCutoff: -1
+  masterScript: {fileID: 0}
 --- !u!23 &7654652748685526449
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -243,7 +274,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4097582250586261911}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -255,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0373f042ba7acf445962c6ccb9bda96a, type: 2}
+  - {fileID: 2100000, guid: 131c370204c494047bf62b9e4bf8b588, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -412,6 +443,9 @@ GameObject:
   - component: {fileID: 1382959792510507839}
   - component: {fileID: 2455861181913481131}
   - component: {fileID: 789235935705738901}
+  - component: {fileID: 1788180486418899714}
+  - component: {fileID: 2561927408276605831}
+  - component: {fileID: 7933919879520750460}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -460,7 +494,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0373f042ba7acf445962c6ccb9bda96a, type: 2}
+  - {fileID: 2100000, guid: 131c370204c494047bf62b9e4bf8b588, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -496,3 +530,60 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: cb79fd5d5b456e243a027eeea9c8c93a, type: 3}
+--- !u!114 &1788180486418899714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994565347441946958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ca8d869f9cce9479651cb8cf1e3d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 8
+  pointsWorth: 15
+  isMovingForward: 0
+  NormalSpeed: 5
+  Barrel: {fileID: 789235934688246608}
+  laser: {fileID: 191804, guid: b4bf48d7cea5f684e83f59f03b51fec1, type: 3}
+  laserLifetime: 10
+  shootPower: 1000
+  fireRate: 2
+  nextFire: 0
+  sourceDeath: {fileID: 5157708093922323740}
+  deathSound: {fileID: 8300000, guid: e43c8eb863e50cf4dbb1a8d9aacb34af, type: 3}
+  useDifferentLaserAudio: 0
+  sourceLaser: {fileID: 0}
+  laserSound: {fileID: 8300000, guid: cd090745ff8042942af6b4a023d9bdaf, type: 3}
+  deathAnimation: {fileID: 7933919879520750460}
+--- !u!114 &2561927408276605831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994565347441946958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca09fe24ba51f704296cbf49e95a1545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7933919879520750460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994565347441946958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae63fdd8f266e84389077a54ba9021b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseStrength: 0.25
+  objectHeight: 1
+  startCutoff: 3
+  deathCutoff: -1
+  masterScript: {fileID: 0}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3134118161761281490}
   - component: {fileID: 381867004926146011}
   - component: {fileID: 1547878206781181660}
+  - component: {fileID: 1680931981497609632}
   - component: {fileID: 3791463564587084038}
   - component: {fileID: 6728539323799784011}
   - component: {fileID: 7289511665022869129}
@@ -57,13 +58,13 @@ MonoBehaviour:
   NormalSpeed: 5
   Barrel: {fileID: 6728539324245929131}
   laser: {fileID: 191804, guid: 9e2231fe9d5173c458fb1e5bd8da69d8, type: 3}
-  laserLifetime: 4
+  laserLifetime: 10
   shootPower: 1000
   fireRate: 2
   nextFire: 0
   sourceDeath: {fileID: 8737897283709697388}
   deathSound: {fileID: 8300000, guid: 73b4d4835d20581409d49b6a14b2b7f6, type: 3}
-  useAttachedAudio: 0
+  useDifferentLaserAudio: 0
   sourceLaser: {fileID: 0}
   laserSound: {fileID: 8300000, guid: ebc94b236ecc4ce40823275cab43fe9c, type: 3}
   deathAnimation: {fileID: 1547878206781181660}
@@ -88,6 +89,18 @@ MonoBehaviour:
   explosionUpward: 0.4
   useOriginalPrefabMaterial: 0
   newMaterialColour: {r: 0.003921569, g: 0.227451, b: 0.8862746, a: 1}
+--- !u!114 &1680931981497609632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320848527469707112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca09fe24ba51f704296cbf49e95a1545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &3791463564587084038
 MeshRenderer:
   m_ObjectHideFlags: 0

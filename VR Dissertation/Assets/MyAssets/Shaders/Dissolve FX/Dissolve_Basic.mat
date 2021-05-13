@@ -71,7 +71,7 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
-    - _CutoffHeight: 0
+    - _CutoffHeight: 1
     - _DstBlend: 0
     - _EdgeWidth: 0.05
     - _EnvironmentReflections: 1
