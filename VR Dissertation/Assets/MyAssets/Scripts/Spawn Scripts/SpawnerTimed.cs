@@ -19,7 +19,7 @@ public class SpawnerTimed : MonoBehaviour
     public float beat = (60/130)*2;     // Time when enemies are instantiated = (one minute / beats per minute) x 2
     private float timer;                // Timer between beats and spawning of enemies
     public AudioClip audioClip;         // Get Audio Clip    
-    public AudioSource audioSource;    // Get Audio Source    
+    public AudioSource audioSource;     // Get Audio Source    
 
     private ScoreScript scoreScript;
 
@@ -30,6 +30,22 @@ public class SpawnerTimed : MonoBehaviour
         //audioSource.pitch = 1.0f;
 
         scoreScript = GameObject.Find("Score_Canvas").GetComponentInChildren<ScoreScript>();
+
+        switch (DifficultyValues.Difficulty)
+        {
+            case DifficultyValues.Difficulties.easy:
+                beat /= 2;
+                break;
+
+            case DifficultyValues.Difficulties.normal:
+                beat *= 1;
+                break;
+
+            case DifficultyValues.Difficulties.hard:
+                beat *= 2;
+                break;
+        }
+
     }
 
     private void Awake()

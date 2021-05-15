@@ -175,7 +175,7 @@
     "m_Groups": [
         {
             "m_GuidSerialized": "26f53c51-cce9-4693-b89a-5940df280db9",
-            "m_Title": "World-Space Cutoff",
+            "m_Title": "Object-Space Cutoff",
             "m_Position": {
                 "x": 10.0,
                 "y": 10.0

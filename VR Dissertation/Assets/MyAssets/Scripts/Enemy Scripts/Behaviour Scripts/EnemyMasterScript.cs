@@ -61,6 +61,28 @@ public class EnemyMasterScript : MonoBehaviour
 
         // Access Score Canvas object and ScoreScript
         scoreScript = GameObject.Find("Score_Canvas").GetComponentInChildren<ScoreScript>();
+
+        switch (DifficultyValues.Difficulty)
+        {
+            case DifficultyValues.Difficulties.easy:
+                health /= 2;
+                pointsWorth /= 2;
+                NormalSpeed /= 2;
+                break;
+
+            case DifficultyValues.Difficulties.normal:
+                health *= 1;
+                pointsWorth *= 1;
+                NormalSpeed *= 1;
+                break;
+
+            case DifficultyValues.Difficulties.hard:
+                health *= 2;
+                pointsWorth *= 2;
+                NormalSpeed *= 2;
+                break;
+        }
+
     }
 
     public void FixedUpdate()
