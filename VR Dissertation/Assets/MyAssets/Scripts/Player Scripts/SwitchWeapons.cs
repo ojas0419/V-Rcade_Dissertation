@@ -32,19 +32,24 @@ public class SwitchWeapons : MonoBehaviour
         /* when the controller's angle is large enough along the Y OR X axis, switch guns */
         if (Vector3.Angle(transform.up, Vector3.up) > 80 && controllerPosition.y > head.transform.position.y - 0.4f && controllerPosition.x < head.transform.position.x && Time.time > nextSwitch)
         {
-            nextSwitch = Time.time + switchRate;
-            var mainGun = this.gameObject.transform.GetChild(0);
-            var shield = this.gameObject.transform.GetChild(1);
+            // if the controller is behind the center eye camera
+            if (Vector3.Angle(transform.up, Vector3.up) > 90 && controllerPosition.y > head.transform.position.y)
+            {
+                nextSwitch = Time.time + switchRate;
+                var mainGun = this.gameObject.transform.GetChild(0);
+                var shield = this.gameObject.transform.GetChild(1);
 
-            if (mainGun.gameObject.activeSelf == true)
-            {
-                mainGun.gameObject.SetActive(false);
-                shield.gameObject.SetActive(true);
-            }
-            else if (mainGun.gameObject.activeSelf == false)
-            {
-                shield.gameObject.SetActive(false);
-                mainGun.gameObject.SetActive(true);
+                if (mainGun.gameObject.activeSelf == true)
+                {
+                    mainGun.gameObject.SetActive(false);
+                    shield.gameObject.SetActive(true);
+                }
+                else if (mainGun.gameObject.activeSelf == false)
+                {
+                    shield.gameObject.SetActive(false);
+                    mainGun.gameObject.SetActive(true);
+                }
+
             }
         }
     }
