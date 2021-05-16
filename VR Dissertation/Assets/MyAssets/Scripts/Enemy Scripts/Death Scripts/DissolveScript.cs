@@ -26,7 +26,8 @@ public class DissolveScript : DeathAnimation
         //    material = GetComponent<Renderer>().material;
         //}
 
-        material = GetComponent<Renderer>().material;
+        //material = GetComponent<Renderer>().material;
+        material = GetComponentInChildren<Renderer>().material;
         cutOffTimer = startCutoff;
         SetHeight(startCutoff);
     }

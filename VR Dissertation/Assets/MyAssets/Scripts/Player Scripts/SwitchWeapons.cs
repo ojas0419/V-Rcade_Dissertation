@@ -29,7 +29,7 @@ public class SwitchWeapons : MonoBehaviour
             controllerPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
         }
 
-        /* when the controller's position goes high enough above our head, switch guns */
+        /* when the controller's angle is large enough along the Y OR X axis, switch guns */
         if (Vector3.Angle(transform.up, Vector3.up) > 80 && controllerPosition.y > head.transform.position.y - 0.4f && controllerPosition.x < head.transform.position.x && Time.time > nextSwitch)
         {
             nextSwitch = Time.time + switchRate;
