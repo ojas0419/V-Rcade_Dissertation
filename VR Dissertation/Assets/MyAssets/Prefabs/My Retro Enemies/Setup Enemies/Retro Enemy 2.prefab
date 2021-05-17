@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 8
   pointsWorth: 15
+  isUsingShaderTexture: 1
   objectRenderer: {fileID: 2455861181913481131}
   isMovingForward: 0
   NormalSpeed: 5

@@ -41,7 +41,7 @@ public class RightGunFireBullet : MonoBehaviour
             Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation) as GameObject;
 
             // This line will correct the rotation of the instantiated Bullet, but may not be needed
-            Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 90);
+            //Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 90);
 
             // Get a reference to the Bullet's RigidBody Component and control it
             Rigidbody Temporary_RigidBody;

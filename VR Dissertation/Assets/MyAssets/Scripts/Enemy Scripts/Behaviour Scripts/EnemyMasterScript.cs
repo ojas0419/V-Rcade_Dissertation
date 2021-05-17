@@ -10,6 +10,8 @@ public class EnemyMasterScript : MonoBehaviour
     private Transform player;       // The target to look and aim at
     public int health = 5;          // The enemy's health
     public int pointsWorth;         // Define how many points you get for killing this enemy in inspector
+    public bool isUsingShaderTexture = false;
+    private Texture originalTexture;
     private Color originalColour;   // For grabbing material colour and changing it when hit
     public Renderer objectRenderer;
 
@@ -58,8 +60,15 @@ public class EnemyMasterScript : MonoBehaviour
         // Access Enemy Manager object and EnemyManager script to get the following variables:
         player = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().targetPlayer;
 
-        // Get material colour of object
-        originalColour = objectRenderer.material.color;
+        if(isUsingShaderTexture == false)
+        {
+            // Get material colour of object
+            originalColour = objectRenderer.material.color;
+        }
+        else
+        {
+            originalTexture = objectRenderer.material.GetTexture("_ObjTexture");
+        }
 
         // Access Score Canvas object and ScoreScript
         scoreScript = GameObject.Find("Score_Canvas").GetComponentInChildren<ScoreScript>();
@@ -229,7 +238,14 @@ public class EnemyMasterScript : MonoBehaviour
             {
                 Destroy(collision.gameObject);                  // Destroy the object tagged "Bullet"
                 health -= 1;                                    // Reduce health by 1
-                StartCoroutine("ColourFlash");                  // Run coroutine
+                if(isUsingShaderTexture == false)
+                {
+                    StartCoroutine("ColourFlash");                  // Run coroutine
+                }
+                else
+                {
+                    StartCoroutine("TextureFlash");
+                }
             }
             if (health <= 0)                                    // ...if health is 0 or lower, execute this instead
             {
@@ -265,5 +281,30 @@ public class EnemyMasterScript : MonoBehaviour
 
         // ... and stop this coroutine
         StopCoroutine("ColourFlash");
+    }
+
+    public IEnumerator TextureFlash()
+    {
+        Texture2D targetTexture = new Texture2D(originalTexture.width, originalTexture.height);
+        // Get texture and make it red...
+        GetComponent<Renderer>().material.mainTexture = targetTexture;
+
+        for (int y = 0; y < originalTexture.height; y++)
+        {
+            for (int x = 0; x < originalTexture.width; x++)
+            {
+                targetTexture.SetPixel(x, y, Color.red);
+            }
+        }
+        targetTexture.Apply();
+
+        // ...for 0.1 seconds...
+        yield return new WaitForSeconds(0.1f);
+
+        // ...then reset texture back to the original texture...
+        GetComponent<Renderer>().material.mainTexture = originalTexture;
+
+        // ... and stop this coroutine
+        StopCoroutine("TextureFlash");
     }
 }

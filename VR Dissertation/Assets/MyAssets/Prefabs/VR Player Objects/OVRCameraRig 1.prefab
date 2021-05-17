@@ -953,7 +953,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7731324273719678062
 MonoBehaviour:
@@ -998,7 +998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8dd1729de10c84a929117a6470bed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  livesCanvas: {fileID: 0}
   playerHealth: 3
+  spawnerManager: {fileID: 0}
 --- !u!1 &7731324272133766510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1122,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7735917089462112892}
     m_Modifications:
+    - target: {fileID: 4396645357738796366, guid: 4b07cdf3dc91ead4fb1b844c623886af,
+        type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396645357738796366, guid: 4b07cdf3dc91ead4fb1b844c623886af,
+        type: 3}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 191804, guid: 26387284ea5d8954b8cbce2322a2f0f9, type: 3}
     - target: {fileID: 4396645357738796366, guid: 4b07cdf3dc91ead4fb1b844c623886af,
         type: 3}
       propertyPath: audioSource
@@ -1311,6 +1323,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dummy_Gun_Right
       objectReference: {fileID: 0}
+    - target: {fileID: 4802672809506639345, guid: 7c109d1c24d1e484cbc1a2f3ef785742,
+        type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802672809506639345, guid: 7c109d1c24d1e484cbc1a2f3ef785742,
+        type: 3}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 191804, guid: 9c1cfca5f7d03e94c8f700b847874773, type: 3}
     - target: {fileID: 4802672809506639345, guid: 7c109d1c24d1e484cbc1a2f3ef785742,
         type: 3}
       propertyPath: audioSource

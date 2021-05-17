@@ -24,7 +24,7 @@ public class Shield : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         /* when object tagged "EnemyBullet" hits...*/
-        if (collision.gameObject.tag == ("EnemyBullet"))
+        if (collision.gameObject.CompareTag(("EnemyBullet")))
         {
             // if we are using the attached audio components
             if(useAttachedAudio == true)
@@ -35,6 +35,7 @@ public class Shield : MonoBehaviour
 
             // Destroy the bullet
             Destroy(collision.gameObject);
+            Debug.Log("Shield has blocked a bullet");
         }
     }
 }

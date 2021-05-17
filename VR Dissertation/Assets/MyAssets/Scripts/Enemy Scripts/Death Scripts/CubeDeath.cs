@@ -23,22 +23,27 @@ public class CubeDeath : DeathAnimation
     public bool useOriginalPrefabMaterial = true;
     private Material material;   // this is only needed if changing the colour of pieces created
     public Color newMaterialColour;
+
+    private EnemyMasterScript masterScript;
     #endregion Creating Pieces
 
     public override void RunDeathAnimation()
     {
+        masterScript.sourceDeath.PlayOneShot(masterScript.deathSound);
         Explode();
     }
 
     public void Start()
     {
+        masterScript = GetComponent<EnemyMasterScript>();
+
         // Calculate the pivot distance
         cubesPivotDistance = cubeSize * cubesInRow / 2;
 
         // Use this value to create the pivot vector
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
-
     }
+
     public void Explode()
     {
         Destroy(gameObject);
