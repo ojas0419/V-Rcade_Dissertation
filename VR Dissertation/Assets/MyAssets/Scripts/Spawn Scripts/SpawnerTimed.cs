@@ -45,7 +45,6 @@ public class SpawnerTimed : MonoBehaviour
                 beat *= 2;
                 break;
         }
-
     }
 
     private void Awake()
