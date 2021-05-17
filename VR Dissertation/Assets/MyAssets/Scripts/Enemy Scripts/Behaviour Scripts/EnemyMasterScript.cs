@@ -87,17 +87,17 @@ public class EnemyMasterScript : MonoBehaviour
 
     }
 
-    public void FixedUpdate()
-    {
-        // ONLY FOR TESTING ENEMY DEATHS. Comment out when testing is not needed
-        if (health <= 0 && isDying == false)                // if health is 0 or lower
-        {
-            sourceDeath.PlayOneShot(deathSound);            // Play death sound
-            scoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
-            deathAnimation.RunDeathAnimation();             // Execute explosion
-            isDying = true;
-        }
-    }
+    //public void FixedUpdate()
+    //{
+    //    // ONLY FOR TESTING ENEMY DEATHS. Comment out when testing is not needed
+    //    if (health <= 0 && isDying == false)                // if health is 0 or lower
+    //    {
+    //        sourceDeath.PlayOneShot(deathSound);            // Play death sound
+    //        scoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
+    //        deathAnimation.RunDeathAnimation();             // Execute explosion
+    //        isDying = true;
+    //    }
+    //}
 
     void Update()
     {
