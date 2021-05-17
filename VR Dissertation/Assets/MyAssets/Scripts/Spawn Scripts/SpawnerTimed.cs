@@ -34,7 +34,7 @@ public class SpawnerTimed : MonoBehaviour
         switch (DifficultyValues.Difficulty)
         {
             case DifficultyValues.Difficulties.easy:
-                beat /= 2;
+                beat *= 2;
                 break;
 
             case DifficultyValues.Difficulties.normal:
@@ -42,7 +42,7 @@ public class SpawnerTimed : MonoBehaviour
                 break;
 
             case DifficultyValues.Difficulties.hard:
-                beat *= 2;
+                beat /= 2;
                 break;
         }
     }
