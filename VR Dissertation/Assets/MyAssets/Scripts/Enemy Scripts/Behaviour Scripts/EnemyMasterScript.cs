@@ -11,6 +11,7 @@ public class EnemyMasterScript : MonoBehaviour
     public int health = 5;          // The enemy's health
     public int pointsWorth;         // Define how many points you get for killing this enemy in inspector
     private Color originalColour;   // For grabbing material colour and changing it when hit
+    public Renderer objectRenderer;
 
     [Header("Enemy Flight Path Setup")]
     private int index = 0;
@@ -43,6 +44,7 @@ public class EnemyMasterScript : MonoBehaviour
     public DeathAnimation deathAnimation;
 
     private ScoreScript scoreScript;
+    private bool isDying = false;
     #endregion Enemy Data
 
     private void Awake()
@@ -57,7 +59,7 @@ public class EnemyMasterScript : MonoBehaviour
         player = GameObject.Find("Enemy Manager").GetComponent<EnemyManager>().targetPlayer;
 
         // Get material colour of object
-        originalColour = GetComponent<Renderer>().material.color;
+        originalColour = objectRenderer.material.color;
 
         // Access Score Canvas object and ScoreScript
         scoreScript = GameObject.Find("Score_Canvas").GetComponentInChildren<ScoreScript>();
@@ -88,11 +90,12 @@ public class EnemyMasterScript : MonoBehaviour
     public void FixedUpdate()
     {
         // ONLY FOR TESTING ENEMY DEATHS. Comment out when testing is not needed
-        if (health <= 0)                                    // if health is 0 or lower
+        if (health <= 0 && isDying == false)                // if health is 0 or lower
         {
             sourceDeath.PlayOneShot(deathSound);            // Play death sound
             scoreScript.scoreValue += pointsWorth;          // Access ScoreScript, increase score by the points the enemy is worth
             deathAnimation.RunDeathAnimation();             // Execute explosion
+            isDying = true;
         }
     }
 

@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   pointsWorth: 5
+  objectRenderer: {fileID: 4250340949830240596}
   isMovingForward: 0
   NormalSpeed: 5
   Barrel: {fileID: 6728539324245929131}

@@ -184,6 +184,11 @@ PrefabInstance:
       objectReference: {fileID: 7943199980179059615}
     - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
         type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 5201248706763702414}
+    - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
+        type: 3}
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 07df98341453dbe4da17f7263b176df9, type: 3}
@@ -217,6 +222,11 @@ PrefabInstance:
       propertyPath: deathAnimation
       value: 
       objectReference: {fileID: 146846664624595047}
+    - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
+        type: 3}
+      propertyPath: objectRenderer
+      value: 
+      objectReference: {fileID: 5201248706763702414}
     - target: {fileID: 740701923340470887, guid: bd6c26c32571360469d229a5607c5d82,
         type: 3}
       propertyPath: LocationCoords.Array.size
@@ -410,6 +420,12 @@ MonoBehaviour:
 --- !u!1 &3416602808902962795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4243858715402232514, guid: bd6c26c32571360469d229a5607c5d82,
+    type: 3}
+  m_PrefabInstance: {fileID: 1553461647698144425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5201248706763702414 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6746828779594837031, guid: bd6c26c32571360469d229a5607c5d82,
     type: 3}
   m_PrefabInstance: {fileID: 1553461647698144425}
   m_PrefabAsset: {fileID: 0}
